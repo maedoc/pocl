@@ -1,3 +1,4 @@
+language: cpp
 install:
   - pushd tools/build
   - export PREFIX=prefix

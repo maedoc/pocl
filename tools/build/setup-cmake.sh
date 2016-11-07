@@ -12,13 +12,3 @@ then
 else
 	echo "CMake found at '$(which cmake)'."
 fi
-
-# make running CMake scripts easier
-if [ -z "$(which cmake-p)" ]
-then
-	cat > $PREFIX/bin/cmake-p <<EOF
-#!/bin/bash
-cmake -P "\$@"
-EOF
-	chmod +x $PREFIX/bin/cmake-p 
-fi

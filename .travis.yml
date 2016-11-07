@@ -1,8 +1,6 @@
 language: cpp
 install:
-  - pushd tools/build
   - export PREFIX=prefix
-  - source activate_prefix
-  - bash setup-cmake.sh
-  - cmake .
-  - make install
+  - source tools/build/activate_prefix
+  - bash tools/build/setup-cmake.sh
+  - cd tools/build && cmake . && make install

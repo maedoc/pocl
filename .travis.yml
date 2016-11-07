@@ -1,0 +1,7 @@
+install:
+  - pushd tools/build
+  - export PREFIX=prefix
+  - source activate_prefix
+  - bash setup-cmake.sh
+  - cmake .
+  - make install

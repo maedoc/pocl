@@ -1,0 +1,2 @@
+export PREFIX=$(pwd)/prefix
+export PATH=$PREFIX/bin:$PATH

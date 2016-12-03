@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+if [ -z "$(which llvm-config)" ]
+then
+	pushd ../pocl-build && source activate-prefix && popd
+fi
+
+mkdir -p build && cd build
+
+cmake \
+	-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON \
+	-DBUILD_SHARED_LIBS:BOOL=ON \
+	-DENABLE_ICD:BOOL=OFF \
+	-DDIRECT_LINKAGE:BOOL=ON \
+	-DINSTALL_OPENCL_HEADERS:BOOL=ON \
+	-DPOCL_DEBUG_MESSAGES:BOOL=ON \
+	-DSTATIC_LLVM:BOOL=OFF \
+	-DKERNELLIB_HOST_CPU_VARIANTS:STRING=native \
+	-DCMAKE_INSTALL_PREFIX:STRING=$ENV{PREFIX} \
+	-DCMAKE_BUILD_TYPE:STRING=Debug \
+	-DCMAKE_C_COMPILER:STRING=clang \
+	-DCMAKE_CXX_COMPILER:STRING=clang++ \
+	..
